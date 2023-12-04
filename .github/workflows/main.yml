@@ -3,7 +3,7 @@ name: Docker push
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   hace-todo:
