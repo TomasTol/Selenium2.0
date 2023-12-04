@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="banner">
+
+        <div class="navbar">
+            <img src="../../assets/logo.png" class="logo" routerLink="/main">
+            <ul>
+                <li><a routerLink="/main">Home</a></li>
+                <li><a routerLink="/crearFiesta" *ngIf="logueado == true" >Crea una Publicacion</a></li>
+           |    <li><a routerLink="/login">perfil</a></li> 
+            </ul>
+        </div>
+        <div class="content">
+            <h1>ENCONTRÁ LAS MEJORES FIESTAS   </h1>
+                <p>Desde Caballito hasta Villa Urquiza, aca vas a encontrar todo los tipos de fiestas que queres</p>
+                <div>
+                    <button type="button" routerLink="/search"><span></span>Buscar</button>
+                    <button type="button" *ngIf="logueado == true"> cerrar sesion</button>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

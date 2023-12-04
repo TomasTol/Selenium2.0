@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="subida.component.css">
+</head>
+<body>
+    <div class="banner">
+
+        <div class="navbar">
+            <img src="../../assets/logo.png" class="logo" routerLink="/main">
+            <ul>
+                <li><a routerLink="/main">Home</a></li>
+            </ul>
+        </div>
+        <div class="content">
+                <div class="drag-area">
+
+                    <button>selecciona tus archivos</button>
+                    <input type="file" name="" id="input-file" hidden multiple>
+                </div>
+                <div id="preview"></div>
+                <script src="index.js"></script>
+            </div>
+    </div>
+</body>
+</html>

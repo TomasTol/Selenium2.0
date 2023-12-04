@@ -1,0 +1,67 @@
+<body>
+
+    <div>
+        <div class="navbar">
+            <img src="../../assets/logo.png" class="logo" routerLink="/main">
+                <ul>
+                    <li><a routerLink="/main">Home</a></li>
+                    <li><a routerLink="/register" *ngIf="logueado == true">Register</a></li>
+                </ul>
+        </div>
+
+    </div>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                    <div class="mx-auto" style="width: 250px; background-color: rgba(27, 24, 41, 0.795);border-radius: 0.750rem;">
+                        <div *ngIf="logueado == true"><div class="form-group">
+                  <label for="Email1" id="Email2">Email</label>
+                  <input type="email" class="form-control" id="Email1" [(ngModel)]="email" placeholder="Correo electronico...">
+                </div>
+                <div class="form-group">
+                  <label for="Password1" id="password2">Password</label>
+                  <input type="password" class="form-control" [(ngModel)]="password"  id="password1" placeholder="Contraseña...">
+                </div>
+                <button class="btn btn-su" id="b" (click)="login()">Submit</button>
+                <br>
+                <a routerLink="/register" id="escritura">No tienes cuenta? Cree una aqui.</a>
+            </div>
+
+            </div>
+            <div *ngIf="logueado == false">
+                <h1>Usted esta logueado</h1>
+                <button type="button" class="btn btn-su" (click)="terminar()" routerLink="/"> cerrar sesion</button>
+                <button routerLink="/" class="btn btn-su"> Inicio</button>
+
+                <div class="FIESTA-card" *ngFor="let item of listaExtra; let i = index" [attr.data-index]="i">
+                  <div *ngIf="sePuedeEditar == false">
+                    <p>Nombre: {{ listaExtra[i].nombre }}</p>
+                    <p>Telefono: {{ listaExtra[i].telefono }}</p>
+                    <p>descripcion: {{ listaExtra[i].descripcion }}</p>
+                  </div>
+                    <button (click)="editar(listaExtra[i]._id)" class="btn btn-su">Editar servicio</button>
+                    <div *ngIf="sePuedeEditar == true">
+                        <input type="text" class="form-control"  [(ngModel)]="nombre" placeholder="{{ listaExtra[i].nombre }}">
+                        <input type="text" class="form-control" [(ngModel)]="telefono1" placeholder="{{ listaExtra[i].telefono }}">
+                        <input type="text" class="form-control" [(ngModel)]="descripcion" placeholder="{{ listaExtra[i].descripcion }}">
+                        <button (click)="editarExtra()" class="btn btn-su">Confirmar edición</button>
+                    </div>
+                    <img src="http://localhost:3000/images/{{listaExtra[i].imagen}}">
+
+              </div>
+              <div class="FIESTA-card" *ngFor="let item of listaFiestas; let i = index" [attr.data-index]="i">
+                <div *ngIf="sePuedeEditar == false">
+                  <p>ubicacion: {{ listaFiestas[i].ubicacion }}</p>
+                  <p>Nombre de la empresa: {{ listaFiestas[i].nombreEmpresa }}</p>
+                  <p>Telefono: {{ listaFiestas[i].telefono }}</p>
+                </div>
+                <button (click)="editar(listaFiestas[i]._id)" class="btn btn-su">Editar fiesta</button>
+                <div *ngIf="sePuedeEditar == true">
+                    <input type="text" class="form-control" id="localidad" [(ngModel)]="ubicacion" placeholder="{{ listaFiestas[i].ubicacion }}">
+                    <input type="text" class="form-control" id="nombreLugar" [(ngModel)]="nombreEmpresa" placeholder="{{ listaFiestas[i].nombreEmpresa }}">
+                    <input type="text" class="form-control" id="celular" [(ngModel)]="telefono" placeholder="{{ listaFiestas[i].telefono }}">
+                    <button (click)="editarFiestas()" class="btn btn-su">Confirmar edición</button>
+                </div>
+                <img src="http://localhost:3000/images/{{listaFiestas[i].imagen}}">
+          </div>
+            </div>
+        </body>

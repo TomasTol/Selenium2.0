@@ -1,0 +1,162 @@
+body{
+    background-image: linear-gradient(rgb(60, 50, 136), rgb(67, 82, 149), rgb(74, 96, 153), rgb(107, 127, 164));
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    user-select: none;
+}
+label{
+    color: white;
+}
+h1{
+    color: aliceblue;
+}
+span{   
+    color: green;
+}
+.navbar{
+    width: 85%;
+    margin: auto;
+    padding: 35px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo{
+    width: 120px;
+    cursor: pointer;
+}
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+}
+.navbar ul li a{
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+}
+#Email1{
+    margin: auto;
+    width: auto;
+}
+#Email2{
+    margin: auto;
+    width: auto;
+    margin-left: 100px;
+}
+#password1{
+    margin: auto;
+    width: auto;
+}
+#password2{
+    margin: auto;
+    width: auto;
+    margin-left: 85px;
+}
+#Telefono1{
+
+    margin: auto;
+    width: auto;
+
+}
+#Telefono2{
+
+    margin: auto;
+    width: auto;
+    margin-left: 90px;
+
+}
+#NombreEmpresa1{
+
+    margin: auto;
+    width: auto;
+
+}
+#NombreEmpresa2{
+
+    margin: auto;
+    width: auto;
+    margin-left: 40px;
+
+}
+#NombreP1{
+
+    margin: auto;
+    width: auto;
+
+}
+#NombreP2{
+
+    margin: auto;
+    width: auto;
+    margin-left: 36px;
+
+}
+#ApellidoP1{
+
+    margin: auto;
+    width: auto;
+
+}
+#ApellidoP2{
+
+    margin: auto;
+    width: auto;
+    margin-left: 37px;
+
+}
+#Ubicacion1{
+
+    margin: auto;
+    width: auto;
+
+}
+#Ubicacion2{
+
+    margin: auto;
+    width: auto;
+    margin-left: 46px;
+
+}#CodP1{
+
+    margin: auto;
+    width: auto;
+
+}
+#CodP2{
+
+    margin: auto;
+    width: auto;
+    margin-left: 37px;
+
+}
+#b{
+    color: rgb(10, 245, 166);
+    background-color: rgb(31, 64, 136);
+    align-self: center;
+
+}
+
+#b:hover{
+    outline-style:solid;
+    outline-width: 2px;
+}
+#escritura{
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+
+.formContainer{
+    gap: 50px;
+    max-width: 100%;
+    
+}
+
+#formElement{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de subida de datos</title>
+  <link rel="stylesheet" href="crear-fiesta.component.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container mt-4">
+    <div *ngIf="aux == false" class="card">
+      <div class="card-body">
+        <p class="form-titulo">Ingrese los datos de la fiesta</p>
+        <div class="form-boton">
+          <button (click)="cambiarAgregado()" class="btn btn-su">Cambiar a servicios</button>
+        </div>
+        <input type="file" class="" id="fotos1" (change)="onFileChange($event)" data-label="imagen">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="localidad">Localidad</label>
+            <input type="text" class="form-control" id="localidad" [(ngModel)]="ubicacion">
+            <p class="mensajeError"></p>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="nombreLugar">Nombre de la Empresa</label>
+            <input type="text" class="form-control" id="nombreLugar" [(ngModel)]="nombreEmpresa">
+            <p class="mensajeError"></p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="celular">Celular</label>
+          <input type="text" class="form-control" id="celular" [(ngModel)]="telefono">
+          <p class="mensajeError"></p>
+        </div>
+        <div class="form-boton">
+          <button class="btn btn-su" (click)="crearParty()">Enviar</button>
+        </div>
+        <p class="mensajeCorrecto"></p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="aux == true" class="container mt-4">
+    <div class="card">
+      <div class="card-body">
+        <p class="form-titulo">Ingrese los datos del servicio</p>
+        <div class="form-boton">
+          <button (click)="cambiarFiesta()" class="btn btn-su">Cambiar a Fiestas</button>
+        </div>
+        <input type="file" class="" id="fotos" (change)="onFileChange($event)" data-label="imagen">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="nombre2">
+            <p class="mensajeError"></p>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="celular">Celular</label>
+            <input type="text" class="form-control" id="celular" [(ngModel)]="telefono2">
+            <p class="mensajeError"></p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="descripcion">Descripción</label>
+          <textarea class="form-control" name="descripcion" [(ngModel)]="descripcion"></textarea>
+        </div>
+        <div class="form-boton">
+          <button class="btn btn-su" (click)="crearServicio()">Enviar</button>
+        </div>
+        <p class="mensajeCorrecto"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
