@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClientService } from '../http-client.service';
 import { Router } from '@angular/router';
-
+ 
 @Component({
   selector: 'app-buscador',
   templateUrl: './buscador.component.html',
@@ -14,18 +14,30 @@ export class BuscadorComponent {
   verTabla: boolean = true;
   verTabla2: boolean = true;
   busqueda: string = "";
-  constructor(   private http: HttpClientService, 
+  servicioAux: any = {
+    telefono:"",
+    nombre:"",
+    descripcion:"",
+    imagen:"",
+  }
+  fiestasAux: any = {
+    telefono:"",
+    nombreEmpresa:"",
+    ubicacion:"",
+    imagen:"",
+  }
+  constructor(   private http: HttpClientService,
     private router: Router) { }
   ngOnInit(){
-    
+   
     if(localStorage.getItem("token")){
       this.logueado = true
     }
     else{
       this.logueado = false
     }
-    
-    
+   
+   
     this.http.getFiestas().subscribe({
       next: (data: any) => {
         console.log(data);
@@ -36,7 +48,7 @@ export class BuscadorComponent {
         console.log(error);
       }
     })
-
+ 
     this.http.getExtra().subscribe({
       next: (data: any) => {
         console.log(data);
@@ -56,7 +68,36 @@ export class BuscadorComponent {
       this.verTabla = true;
       this.verTabla2 = true;
     }
-
+    vermas(idAux:string){
+      this.listaExtra.forEach((Servivio:any) => {
+        if(Servivio._id == idAux){
+          this.servicioAux.nombre=Servivio.nombre
+          this.servicioAux.telefono=Servivio.telefono
+          this.servicioAux.descripcion=Servivio.descripcion
+          this.servicioAux.imagen=Servivio.imagen
+        }
+      });
+    }
+    more(idAux:string){
+      this.listaFiestas.forEach((fiesta:any) => {
+        if(fiesta._id == idAux){
+          this.fiestasAux.nombre=fiesta.nombre
+          this.fiestasAux.telefono=fiesta.telefono
+          this.fiestasAux.descripcion=fiesta.descripcion
+          this.fiestasAux.imagen=fiesta.imagen
+        }
+      });
+      
+      const modalData = {
+        nombre: this.fiestasAux.nombre,
+        telefono: this.fiestasAux.telefono,
+        descripcion: this.fiestasAux.descripcion,
+        imagen: this.fiestasAux.imagen,
+      };
+      this.router.navigate(['/modal', modalData]);
+    }
+    
+ 
   buscar(){
     if(this.busqueda == ""){
       this.http.getFiestas().subscribe({

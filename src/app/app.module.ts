@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { SubidaComponent } from './subida/subida.component';
 import { CrearFiestaComponent } from './crear-fiesta/crear-fiesta.component';
 import { EditarFiestaComponent } from './editar-fiesta/editar-fiesta.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { EditarFiestaComponent } from './editar-fiesta/editar-fiesta.component';
     SubidaComponent,
     CrearFiestaComponent,
     EditarFiestaComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
