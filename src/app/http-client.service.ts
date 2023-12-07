@@ -52,7 +52,7 @@ export class HttpClientService {
   editarFiesta(id: any, body:any){
     console.log(id)
     console.log(body)
-    return this.http.patch(this.url+"/editarFiesta/" + id, body)
+    return this.http.patch(this.url+"/actualizarFiesta/" + id, body)
   }
   editarExtra(id: any, body:any){
     console.log(id)

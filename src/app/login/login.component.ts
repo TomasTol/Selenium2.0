@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClientService } from '../http-client.service';
 import { Router } from '@angular/router';
 import * as e from 'express';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,8 @@ import * as e from 'express';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
+  selectedPhoto!: File;
 
   email!: string;
   password!: string;
@@ -20,18 +23,29 @@ export class LoginComponent {
   sePuedeEditar:boolean = false;
 
   id!:string
-  ubicacion!: string
-  telefono!: number
-  nombreEmpresa!: string
 
-  nombre!:string
-  descripcion!:any
-  telefono1!:number
+  ubicaciones: Array<string> = []
+  telefonos: Array<number> = []
+  nombresEmpresa: Array<string> = []
+
+  nombres: Array<string> = []
+  descripciones: Array<string> = []
+  telefonos1: Array<number> = []
+
   constructor(
     private http: HttpClientService,
     private router: Router
   ){  }
   logueado: boolean = false;
+
+  onFileChange(event: any) {
+    const fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      this.selectedPhoto = fileList[0];
+      console.log(this.selectedPhoto)
+    }
+  }
+
   ngOnInit(){
     if(localStorage.getItem("token")){
       this.logueado = false
@@ -45,15 +59,32 @@ export class LoginComponent {
       console.log(error);
     })
     this.http.FiestaPorUsuario(localStorage.getItem("email")).subscribe((data:any) => {
+
       this.listaFiestas = JSON.parse(JSON.stringify(data))
-      console.log(this.listaExtra)
+
+      this.listaFiestas.forEach((element: any) => {
+
+        this.ubicaciones.push(element.ubicacion)
+        this.telefonos.push(element.telefono)
+        this.nombresEmpresa.push(element.nombreEmpresa)
+
+      });
+
      } , error => {
         console.log(error);
       })
     this.http.ExtraPorUsuario(localStorage.getItem("email")).subscribe((data:any) => {
+
       this.listaExtra = JSON.parse(JSON.stringify(data))
 
       console.log(this.listaExtra)
+      this.listaExtra.forEach((element:any) => {
+
+        this.nombres.push(element.nombre)
+        this.telefonos1.push(element.telefono)
+        this.descripciones.push(element.descripcion)
+
+      });
        } , error => {
           console.log(error);
         })
@@ -100,13 +131,17 @@ export class LoginComponent {
     }
   }
 
-  editarFiestas(){
-    const body = {
-      ubicacion: this.ubicacion,
-      telefono: this.telefono,
-      nombreEmpresa: this.nombreEmpresa
-    }
-    this.http.editarFiesta(this.id, body).subscribe((response:any) => {
+  editarFiestas(id: number){
+    const formData = new FormData();
+    formData.append('fiesta', JSON.stringify({
+      ubicacion: this.ubicaciones[id],
+      telefono: this.telefonos[id],
+      email: localStorage.getItem("email"),
+      nombreEmpresa: this.nombresEmpresa[id],
+      imagen: "",
+    }));
+    formData.append("image", this.selectedPhoto)
+    this.http.editarFiesta(this.id, formData).subscribe((response:any) => {
       console.log(response)
       alert("Fiesta modificada")
       this.sePuedeEditar = false
@@ -115,13 +150,16 @@ export class LoginComponent {
       console.log(error);
     })
   }
-  editarExtra(){
-    const body = {
-      nombre: this.nombre,
-      telefono: this.telefono1,
-      descripcion: this.descripcion
-    }
-    this.http.editarExtra(this.id, body).subscribe((response:any) => {
+  editarExtra(ind:number){
+    const formData = new FormData();
+    formData.append('extra', JSON.stringify({
+      nombre: this.nombres[ind],
+      telefono: this.telefonos1[ind],
+      descripcion: this.descripciones[ind]
+    }));
+    formData.append("image", this.selectedPhoto)
+
+    this.http.editarExtra(this.id, formData).subscribe((response:any) => {
       console.log(response)
       alert("Servicio modificado")
       this.sePuedeEditar = false

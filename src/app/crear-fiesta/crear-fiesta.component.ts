@@ -11,7 +11,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class CrearFiestaComponent {
   aux: boolean = false;
-  constructor(   private http: HttpClientService, 
+  constructor(   private http: HttpClientService,
     private router: Router) { }
     ubicacion!: string;
     telefono!: number;
@@ -32,12 +32,12 @@ export class CrearFiestaComponent {
     }
     cambiarFiesta(){
     this.aux= false;
-    
+
     }
     cambiarAgregado(){
       this.aux= true;
     }
-  crearParty(){
+   crearParty(){
     if (!this.ubicacion || !this.telefono || !this.nombreEmpresa) {
         alert("Please fill in all required fields.")
         return;
@@ -51,11 +51,11 @@ export class CrearFiestaComponent {
       imageURL: "",
     }));
     formData.append('image', this.selectedPhoto);
-  this.http.crearFiesta(formData).subscribe((response:any) => { 
+  this.http.crearFiesta(formData).subscribe((response:any) => {
     console.log(response)
     this.router.navigate(['/main'])
     alert("Fiesta creada")
-  },error => {  
+  },error => {
     console.log(error);
   })
   }
@@ -76,11 +76,11 @@ export class CrearFiestaComponent {
     }));
     console.log(formData)
     formData.append('image', this.selectedPhoto);
-  this.http.crearServicio(formData).subscribe((response:any) => { 
+  this.http.crearServicio(formData).subscribe((response:any) => {
     console.log(response)
     this.router.navigate(['/main'])
     alert("servicio creado")
-  },error => {  
+  },error => {
     console.log(error);
   })
   }
