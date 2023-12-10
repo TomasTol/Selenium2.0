@@ -9,6 +9,10 @@ import { Router } from '@angular/router';
 })
 export class BuscadorComponent {
   logueado: boolean = false;
+  datosExtendidos: any = {};
+  datosExtendidos2: any = {}
+  mostrarPopUp: boolean = false;
+  mostrarPopUp2: boolean = false;
   listaFiestas: any;
   listaExtra: any;
   verTabla: boolean = true;
@@ -142,4 +146,29 @@ export class BuscadorComponent {
       }
     })
   }
+
+  cerrarPopUp(){
+    this.mostrarPopUp = false
+  }
+
+  abrirPopUp(nombre:any, telefono: any, descripcion: any, foto: any){
+    this.datosExtendidos.nombre = nombre
+    this.datosExtendidos.telefono = telefono
+    this.datosExtendidos.descripcion = descripcion
+    this.datosExtendidos.foto =  foto
+    this.mostrarPopUp = true;
+  }
+
+  cerrarPopUp2(){
+    this.mostrarPopUp2 = false
+  }
+
+  abrirPopUp2(ubicacion:any, telefono: any, empresa: any, foto: any){
+    this.datosExtendidos2.ubicacion = ubicacion
+    this.datosExtendidos2.telefono = telefono
+    this.datosExtendidos2.empresa = empresa
+    this.datosExtendidos2.foto =  foto
+    this.mostrarPopUp2 = true;
+  }
+
 }

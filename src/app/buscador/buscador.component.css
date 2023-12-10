@@ -310,4 +310,51 @@
 		color: #fdfdfc;
 	  }
 	  
-	  
+.popUp {
+	z-index: 10;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	color: #000000;
+	background-color: #000000c2;
+}
+
+.popUpCard button {
+	margin-left: 90%;
+	margin-bottom: 5px;
+	background-color: #cc5656;
+	border-style: none;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.imgContainer img{
+	margin-top: 10px;
+	object-fit: contain;
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+	height: 10%;
+	max-height: 650px;
+}
+
+.popUpCard h1{
+	color: #000000;
+	word-break: break-word;
+}
+
+.popUpCard{
+	padding: 20px;
+	margin-top: 1%;
+	max-width: 35%;
+	margin-left:auto;
+	margin-right:auto;
+	text-align: center;
+	background-color: white;
+	border-radius: 10px;
+}
+
+.popUpCard p{
+	font-size: large;
+	word-break: break-word;
+}

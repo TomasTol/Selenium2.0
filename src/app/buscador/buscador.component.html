@@ -30,6 +30,28 @@
         </button>
       </div>
     </div>
+    <div class="popUp" *ngIf="mostrarPopUp">
+      <div class="popUpCard">
+        <button class="btn btn-primary"(click)="cerrarPopUp()">X</button>
+        <h1>{{ datosExtendidos.nombre }}</h1>
+        <div class="imgContainer">
+          <img src="http://localhost:3000/images/{{datosExtendidos.foto}}" class="card-img-top" alt="...">
+        </div>
+        <p class="card-text">Telefono: {{ datosExtendidos.telefono }}</p>
+        <p class="card-text">Descripción: {{ datosExtendidos.descripcion }}</p>
+      </div>
+    </div>
+    <div class="popUp" *ngIf="mostrarPopUp2">
+      <div class="popUpCard">
+        <button class="btn btn-primary"(click)="cerrarPopUp2()">X</button>
+        <div class="imgContainer">
+          <img src="http://localhost:3000/images/{{datosExtendidos2.foto}}" class="card-img-top" alt="...">
+        </div>
+        <p class="card-text">Ubicacion: {{ datosExtendidos2.ubicacion }}</p>
+        <p class="card-text">Telefono: {{ datosExtendidos2.telefono }}</p>
+        <p class="card-text">Empresa: {{ datosExtendidos2.empresa }}</p>
+      </div>
+    </div>
     <div class="wrap">
       <h1 class="mt-3 fiestas" *ngIf="verTabla == true">Fiestas</h1>
       <h1 class="mt-3 " *ngIf="verTabla == false">Servicios</h1>
@@ -44,7 +66,7 @@
                   <p class="card-text">Nombre: {{ listaExtra[i].nombre }}</p>
                   <p class="card-text">Telefono: {{ listaExtra[i].telefono }}</p>
                   <p class="card-text">Descripción: {{ listaExtra[i].descripcion }}</p>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver mas</button>
+                  <button type="button" class="btn btn-primary" (click)="abrirPopUp(listaExtra[i].nombre, listaExtra[i].telefono, listaExtra[i].descripcion,listaExtra[i].imagen)">Ver Mas</button>
                   
                </div>
               </div>
@@ -62,7 +84,7 @@
                   <p class="card-text">Ubicacion: {{ listaFiestas[i].ubicacion }}</p>
                   <p class="card-text">Empresa: {{ listaFiestas[i].nombreEmpresa }}</p>
                   <p class="card-text">Telefono: {{ listaFiestas[i].telefono }}</p>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver mas</button>
+                  <button type="button" class="btn btn-primary" (click)="abrirPopUp2(listaFiestas[i].ubicacion, listaFiestas[i].telefono, listaFiestas[i].nombreEmpresa,listaFiestas[i].imagen)">Ver Mas</button>
                 </div>
               </div>
             </div>
