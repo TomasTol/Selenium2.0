@@ -5,7 +5,7 @@ on:
     types: [opened, reopened, ready_for_review]
     branches: [master]
 jobs:
-  build_and_preview:
+  test_changes:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,3 +17,11 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
           expires: 30d
           projectId: your-Firebase-project-ID
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build and run development server
+        run: npm start&
+
+      - name: Run tests
+        run: npm run sample-test
