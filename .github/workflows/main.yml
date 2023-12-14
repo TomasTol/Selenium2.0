@@ -2,10 +2,8 @@ name: Prueba
 
 on:
   pull_request:
-    # Optionally configure to run only for specific files. For example:
-    # paths:
-    # - "website/**"
-
+    types: [opened, reopened, ready_for_review]
+    branches: [master]
 jobs:
   build_and_preview:
     runs-on: ubuntu-latest
